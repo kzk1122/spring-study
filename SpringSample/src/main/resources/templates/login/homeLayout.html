@@ -6,26 +6,52 @@
 <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
 <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+
+<!-- cssの読み込み -->
+<link th:href="@{/css/home.css}" rel="stylesheet"></link>
+
+<title>home</title>
+
 </head>
 
-<body class="text-center">
 
-<h1>Login</h1>
-<form method="post" action="/login">
-	<label>ユーザーID</label>
-	<input type="text"/><br/>
-	<br/>
-	
-	<label>パスワード</label>
-	<input type="password"/><br/>
-	<br/>
-	
-	<button class="btn btn-primary" type="submit">ログイン</button>
-</form>
 
-<br/>
+<body>
 
-<a th:href="@{'/signup'}">ユーザ新規登録はこちら</a>
+<!-- ナビゲーションばー -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fieled">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">SpringSample</a>
+		</div>
+		
+		<form method="post" th:action="@{/layout}">
+			<button class="btn btn-link pull-right navbar-brand" type="submit">ログアウト</button>
+		</form>
+	</div>
+</nav>
+
+<!-- サイドバー -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2 sidebar">
+			<ul class="nav nav-pills nav-stacked">
+				<li role="presentation">
+				<a th:href="@{'/userList'}">ユーザ管理</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- コンテンツ -->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-2 main">
+			<div th:include="__${contents}__"></div>
+		</div>
+	</div>
+</div>
 
 </body>
 </html>
